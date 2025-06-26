@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Trend Media</title>
   <style>
-    /* Reset and base */
     * {
       box-sizing: border-box;
     }
@@ -17,6 +16,8 @@
       line-height: 1.5;
       direction: rtl;
       text-align: center;
+      width: 100vw;
+      overflow-x: hidden;
     }
     a {
       color: inherit;
@@ -24,25 +25,25 @@
       transition: color 0.3s ease;
     }
     a:hover {
-      color: #f97316; /* orange-500 */
+      color: #f97316;
     }
 
-    /* Container */
     main {
-      max-width: 1200px;
-      margin: 0 auto;
+      width: 100vw;
       padding: 0 1rem;
+      margin: 0 auto;
     }
 
-    /* Header */
     header {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid #374151; /* gray-700 */
+      padding: 1.5rem 1rem;
+      border-bottom: 1px solid #374151;
       gap: 1rem;
+      width: 100%;
+      max-width: none;
     }
     nav {
       display: flex;
@@ -92,16 +93,18 @@
       }
     }
 
-    /* Hero */
     .hero {
       background: linear-gradient(135deg, black 0%, #1E2235 100%);
       padding: 4rem 1rem;
+      width: 100vw;
+      max-width: none;
+      margin: 0 auto;
     }
     .hero h1 {
       font-weight: 800;
       font-size: 1.5rem;
       line-height: 1.2;
-      max-width: 500px;
+      max-width: 600px;
       margin: 0 auto;
     }
     .hero h1 .orange {
@@ -113,7 +116,7 @@
       }
     }
     .hero p {
-      color: #d1d5db; /* gray-300 */
+      color: #d1d5db;
       margin-top: 1rem;
       max-width: 400px;
       margin-left: auto;
@@ -126,11 +129,11 @@
       }
     }
 
-    /* Sections */
     section {
       padding: 3rem 1rem;
-      max-width: 900px;
+      max-width: 100vw;
       margin: 0 auto;
+      width: 100%;
     }
     section.bg-dark {
       background-color: #101322;
@@ -154,17 +157,17 @@
     section p {
       color: #d1d5db;
       font-size: 0.9rem;
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
       line-height: 1.4;
     }
 
-    /* Grid for services, features, projects */
     .grid-3 {
       display: grid;
       grid-template-columns: 1fr;
       gap: 1.25rem;
       margin-top: 2rem;
+      max-width: 100vw;
     }
     @media(min-width: 640px) {
       .grid-3 {
@@ -177,7 +180,6 @@
       }
     }
 
-    /* Card style */
     .card {
       background-color: #1A1D2E;
       padding: 1.25rem;
@@ -206,7 +208,6 @@
       font-size: 0.875rem;
     }
 
-    /* Projects images */
     .project-card {
       position: relative;
       border-radius: 12px;
@@ -243,26 +244,29 @@
       font-size: 0.9rem;
     }
 
-    /* Contact */
+    #contact {
+      padding-bottom: 4rem;
+      text-align: center;
+    }
     #contact p {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      font-size: 1rem;
-      margin: 0.5rem 0;
+      font-size: 1.125rem;
+      margin: 0.75rem 1rem;
     }
-    #contact svg {
+    #contact p span {
+      font-size: 1.5rem;
       color: #f97316;
-      min-width: 20px;
-      min-height: 20px;
+      user-select: none;
     }
     #contact .social-icons {
       margin-top: 1rem;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 2rem;
     }
     #contact .social-icons a {
       color: inherit;
@@ -272,11 +276,12 @@
       color: #f97316;
     }
 
-    /* Footer */
     footer {
       padding: 1.5rem 1rem;
       font-size: 0.875rem;
       color: #6b7280;
+      width: 100vw;
+      max-width: none;
     }
   </style>
 </head>
@@ -395,10 +400,10 @@
       </div>
     </section>
 
-    <section id="contact" class="bg-dark" style="padding-bottom: 4rem;">
+    <section id="contact" class="bg-dark">
       <h2>تواصل معنا</h2>
-      <p><span style="vertical-align:middle;">📧</span> trendmediajor@gmail.com</p>
-      <p><span style="vertical-align:middle;">📞</span> 0791569362</p>
+      <p><span>📧</span> trendmediajor@gmail.com</p>
+      <p><span>📞</span> 0791569362</p>
       <div class="social-icons">
         <a href="https://www.instagram.com/trendmedia.jo" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📸</a>
         <a href="https://www.facebook.com/USERNAME" target="_blank" rel="noopener noreferrer" aria-label="Facebook">📘</a>
