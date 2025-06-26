@@ -335,6 +335,44 @@
       color: #6b7280;
       text-align: center;
     }
+.toggles {
+  display: flex;
+  gap: 1rem;
+}
+.toggles button {
+  background-color: #f97316;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.light-mode {
+  background-color: #ffffff;
+  color: #111827;
+}
+.light-mode .hero {
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+}
+.light-mode header,
+.light-mode footer,
+.light-mode section.bg-dark,
+.light-mode section.bg-darker {
+  background-color: #f9fafb !important;
+  color: #111827;
+}
+.light-mode .card,
+.light-mode .project-card {
+  background-color: #ffffff;
+  color: #111827;
+}
+.light-mode .card h3 {
+  color: #f97316;
+}
+
+
   </style>
 </head>
 <body>
@@ -350,6 +388,11 @@
         <span><span class="orange">Media</span> Trend</span>
         <img src="trend.png" alt="Trend Media Logo" />
       </div>
+<div class="toggles">
+  <button id="lang-toggle">English</button>
+  <button id="theme-toggle">🌙</button>
+</div>
+
     </header>
 
     <section class="hero">
@@ -454,5 +497,66 @@
       <p>© 2024 Trend Media. جميع الحقوق محفوظة.</p>
     </footer>
   </main>
+<script>
+  const langToggle = document.getElementById('lang-toggle');
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  // اللغة الحالية
+  let currentLang = 'ar';
+  let currentTheme = 'dark';
+
+  // النصوص باللغتين
+  const translations = {
+    ar: {
+      about: 'من نحن',
+      services: 'خدماتنا',
+      contact: 'تواصل معنا',
+      projects: 'شركائنا',
+      heroTitle: 'نُطلق علامتك التجارية نحو',
+      heroSpan: 'الترند التالي',
+      heroDesc: 'شركة رقمية متخصصة في التسويق الإلكتروني وإدارة السوشيال ميديا بأحدث تقنيات الذكاء الاصطناعي',
+      rights: '© 2024 Trend Media. جميع الحقوق محفوظة.',
+    },
+    en: {
+      about: 'About Us',
+      services: 'Services',
+      contact: 'Contact Us',
+      projects: 'Our Partners',
+      heroTitle: 'We launch your brand into the',
+      heroSpan: 'Next Trend',
+      heroDesc: 'A digital agency specialized in online marketing and social media using AI tools.',
+      rights: '© 2024 Trend Media. All rights reserved.',
+    }
+  };
+
+  // تغيير اللغة
+  langToggle.addEventListener('click', () => {
+    currentLang = currentLang === 'ar' ? 'en' : 'ar';
+    document.documentElement.lang = currentLang;
+    document.body.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+    langToggle.textContent = currentLang === 'ar' ? 'English' : 'العربية';
+    updateTexts();
+  });
+
+  // تغيير الوضع الليلي / النهاري
+  themeToggle.addEventListener('click', () => {
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    body.classList.toggle('light-mode');
+    themeToggle.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+  });
+
+  function updateTexts() {
+    const t = translations[currentLang];
+    document.querySelector('a[href="#about"]').textContent = t.about;
+    document.querySelector('a[href="#services"]').textContent = t.services;
+    document.querySelector('a[href="#contact"]').textContent = t.contact;
+    document.querySelector('a[href="#projects"]').textContent = t.projects;
+    document.querySelector('.hero h1').innerHTML = `${t.heroTitle}<br><span class="orange">${t.heroSpan}</span>`;
+    document.querySelector('.hero p').textContent = t.heroDesc;
+    document.querySelector('footer p').textContent = t.rights;
+  }
+</script>
+
 </body>
 </html>
