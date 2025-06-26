@@ -5,331 +5,454 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Trend Media</title>
   <style>
-    :root {
-      --main-bg: #0D0F1C;
-      --section-bg: #101322;
-      --card-bg: #1A1D2E;
-      --text-color: white;
-      --muted-color: #d1d5db;
+    * {
+      box-sizing: border-box;
     }
-
-    body.light-mode {
-      --main-bg: #ffffff;
-      --section-bg: #f3f4f6;
-      --card-bg: #ffffff;
-      --text-color: #111827;
-      --muted-color: #374151;
-    }
-
     body {
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background-color: var(--main-bg);
-      color: var(--text-color);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0D0F1C;
+      color: white;
+      line-height: 1.5;
       direction: rtl;
       text-align: right;
-      transition: all 0.3s ease;
     }
-
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #f97316;
     }
 
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* الهيدر */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem;
-      background-color: var(--main-bg);
+      background-color: #0D0F1C;
       border-bottom: 1px solid #374151;
-      flex-wrap: wrap;
+      padding: 1rem 1rem;
       gap: 1rem;
+      flex-wrap: wrap;
     }
 
     nav {
       display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
+      gap: 2rem;
       font-weight: bold;
+      font-size: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      cursor: pointer;
     }
 
     .logo {
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      font-weight: bold;
       font-size: 1.5rem;
+      user-select: none;
     }
-
+    .logo .orange {
+      color: #f97316;
+    }
     .logo img {
       width: 60px;
       height: 60px;
+      object-fit: contain;
+    }
+    @media(min-width: 640px) {
+      .logo img {
+        width: 96px;
+        height: 96px;
+      }
     }
 
-    .orange {
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, black 0%, #1E2235 100%);
+      padding: 4rem 1rem;
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 3rem;
+    }
+    .hero h1 {
+      font-weight: 800;
+      font-size: 2.5rem;
+      line-height: 1.2;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .hero h1 .orange {
       color: #f97316;
     }
-
-    .toggles {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .toggles button {
-      padding: 0.4rem 0.8rem;
-      border: none;
-      border-radius: 6px;
-      background-color: #f97316;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: linear-gradient(135deg, black, #1E2235);
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 800;
-    }
-
     .hero p {
+      color: #d1d5db;
+      margin-top: 1rem;
       max-width: 400px;
-      margin: 1rem auto 0;
-      color: var(--muted-color);
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1rem;
     }
 
+    /* Sections */
     section {
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
       text-align: center;
-      background-color: var(--section-bg);
     }
-
+    section.bg-dark {
+      background-color: #101322;
+    }
+    section.bg-darker {
+      background-color: #0D0F1C;
+    }
     section h2 {
-      border-bottom: 2px solid #f97316;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-bottom: 3px solid #f97316;
       display: inline-block;
+      padding-bottom: 0.25rem;
       margin-bottom: 1rem;
-      font-size: 1.4rem;
+    }
+    section p {
+      color: #d1d5db;
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.4;
     }
 
-    .grid {
-      display: grid;
-      gap: 1.5rem;
-    }
-
+    /* Grid containers */
     .grid-3 {
+      display: grid;
       grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 100%;
+      justify-items: center;
     }
-
-    @media (min-width: 640px) {
+    @media(min-width: 640px) {
       .grid-3 {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-
-    @media (min-width: 992px) {
+    @media(min-width: 992px) {
       .grid-3 {
         grid-template-columns: repeat(3, 1fr);
       }
     }
 
+    /* Cards */
     .card {
-      background-color: var(--card-bg);
+      background-color: #1A1D2E;
+      padding: 1.5rem;
+      border-radius: 12px;
       border: 1px solid #374151;
-      border-radius: 10px;
-      padding: 1rem;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      cursor: default;
+      max-width: 320px;
+      width: 100%;
+      box-sizing: border-box;
     }
-
     .card:hover {
       transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
     }
-
-    .card .emoji {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
+    .emoji {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
     }
-
     .card h3 {
       color: #f97316;
+      font-weight: 600;
       margin-bottom: 0.5rem;
+      font-size: 1.25rem;
     }
-
     .card p {
-      color: var(--muted-color);
-      font-size: 0.95rem;
+      color: #9ca3af;
+      font-size: 1rem;
+      line-height: 1.4;
     }
 
-    .contact p {
+    /* Projects */
+    .project-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #374151;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      max-width: 320px;
+      width: 100%;
+    }
+    .project-card:hover img {
+      transform: scale(1.1);
+    }
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0,0,0,0.7);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      text-align: center;
+    }
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+    .project-overlay p {
+      color: white;
+      font-size: 1rem;
+    }
+
+    /* Partners Section */
+    #partners {
+      padding: 3rem 1rem;
+      background-color: #0D0F1C;
+    }
+    #partners h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-bottom: 3px solid #f97316;
+      display: inline-block;
+      padding-bottom: 0.25rem;
+      margin-bottom: 2rem;
+    }
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .partner-box {
+      background-color: #1A1D2E;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid #374151;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100px;
+      box-sizing: border-box;
+    }
+    .partner-box:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px 3px #f97316;
+    }
+    .partner-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+    /* Contact */
+    #contact {
+      background-color: #101322;
+      padding: 3rem 1rem;
+      color: #d1d5db;
+      text-align: center;
+    }
+    #contact h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-bottom: 3px solid #f97316;
+      display: inline-block;
+      padding-bottom: 0.25rem;
+      margin-bottom: 1.5rem;
+    }
+    #contact .contact-info {
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    #contact .contact-info p {
+      margin: 0.75rem 0;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 0.5rem;
-      margin: 0.5rem 0;
-      color: var(--muted-color);
+      font-size: 1.25rem;
+      text-align: center;
+      color: #d1d5db;
     }
-
-    .social-icons {
+    #contact .contact-info p svg {
+      fill: #f97316;
+      width: 22px;
+      height: 22px;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    #contact .social-icons {
+      margin-top: 1.5rem;
+      font-size: 0;
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      margin-top: 1rem;
+      gap: 2rem;
     }
-
-    .social-icons svg {
+    #contact .social-icons a {
+      display: inline-block;
       width: 28px;
       height: 28px;
-      transition: transform 0.3s ease;
+      transition: color 0.3s ease;
+    }
+    #contact .social-icons a svg {
+      width: 28px;
+      height: 28px;
+      display: block;
+      fill: currentColor;
+      transition: fill 0.3s ease;
+    }
+    #contact .social-icons a:hover {
+      color: #f97316;
     }
 
-    .social-icons a:hover svg {
-      transform: scale(1.1);
-    }
-
+    /* Footer */
     footer {
-      background-color: var(--main-bg);
-      padding: 1rem;
+      padding: 1.5rem 1rem;
+      font-size: 0.875rem;
       color: #6b7280;
-      font-size: 0.9rem;
       text-align: center;
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="#about" id="nav-about">من نحن</a>
-      <a href="#services" id="nav-services">خدماتنا</a>
-      <a href="#partners" id="nav-projects">شركائنا</a>
-      <a href="#contact" id="nav-contact">تواصل معنا</a>
-    </nav>
-    <div class="logo">
-      <span><span class="orange">Media</span> Trend</span>
-      <img src="trend.png" alt="logo" />
-    </div>
-    <div class="toggles">
-      <button id="lang-toggle">English</button>
-      <button id="theme-toggle">🌙</button>
-    </div>
-  </header>
-
-  <section class="hero">
-    <h1 id="hero-title">نُطلق علامتك التجارية نحو <span class="orange">الترند التالي</span></h1>
-    <p id="hero-desc">شركة رقمية متخصصة في التسويق الإلكتروني وإدارة السوشيال ميديا بأحدث تقنيات الذكاء الاصطناعي</p>
-  </section>
-
-  <section id="about">
-    <h2 id="about-title">من نحن</h2>
-    <p id="about-desc">نحن شركة رقمية متخصصة في التسويق الإلكتروني وإدارة السوشال ميديا باستخدام أدوات الذكاء الاصطناعي.</p>
-  </section>
-
-  <section id="services">
-    <h2 id="services-title">خدماتنا</h2>
-    <div class="grid grid-3">
-      <div class="card">
-        <div class="emoji">📱</div>
-        <h3>إدارة السوشيال ميديا</h3>
-        <p>Instagram، TikTok، Facebook</p>
+  <main>
+    <header>
+      <nav>
+        <a href="#about">من نحن</a>
+        <a href="#services">خدماتنا</a>
+        <a href="#partners">شركائنا</a>
+        <a href="#contact">تواصل معنا</a>
+      </nav>
+      <div class="logo">
+        <span><span class="orange">Media</span> Trend</span>
+        <img src="trend.png" alt="Trend Media Logo" />
       </div>
-      <div class="card">
-        <div class="emoji">🎨</div>
-        <h3>تصميم بوستات</h3>
-        <p>بوستات ثابتة وكاروسيل بجودة عالية</p>
+    </header>
+
+    <section class="hero">
+      <h1>نُطلق علامتك التجارية نحو <br /><span class="orange">الترند التالي</span></h1>
+      <p>شركة رقمية متخصصة في التسويق الإلكتروني وإدارة السوشيال ميديا بأحدث تقنيات الذكاء الاصطناعي</p>
+    </section>
+
+    <section id="about" class="bg-dark">
+      <h2>من نحن</h2>
+      <p>
+        نحن شركة رقمية متخصصة في التسويق الإلكتروني وإدارة السوشال ميديا باستخدام أدوات الذكاء الاصطناعي، نصنع محتوى يُحدث التأثير، ونساعد علامتك التجارية في الوصول للجمهور الصحيح بأذكى الطرق.
+      </p>
+    </section>
+
+    <section id="services" class="bg-darker">
+      <h2>خدماتنا</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="emoji">📱</div>
+          <h3>إدارة السوشيال ميديا</h3>
+          <p>إدارة احترافية لحساباتك على Instagram، TikTok، Facebook</p>
+        </div>
+        <div class="card">
+          <div class="emoji">🎨</div>
+          <h3>تصميم بوستات احترافية</h3>
+          <p>تصميم بوستات ثابتة وكاروسيل بجودة عالية</p>
+        </div>
+        <div class="card">
+          <div class="emoji">✍️</div>
+          <h3>كتابة محتوى تسويقي</h3>
+          <p>كتابة محتوى جذاب ومخصص يحقق نتائج مؤثرة</p>
+        </div>
+        <div class="card">
+          <div class="emoji">🎥</div>
+          <h3>إنتاج Reels بالذكاء الاصطناعي</h3>
+          <p>تصميم وخلق فيديوهات قصيرة باستخدام أدوات AI</p>
+        </div>
+        <div class="card">
+          <div class="emoji">📊</div>
+          <h3>الحملات الإعلانية</h3>
+          <p>إطلاق حملات ممولة على Meta, Google, TikTok</p>
+        </div>
+        <div class="card">
+          <div class="emoji">📈</div>
+          <h3>التحليلات والتقارير</h3>
+          <p>تحليلات ذكية وتقارير لأداء حملتك</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="emoji">✍️</div>
-        <h3>كتابة محتوى</h3>
-        <p>كتابة محتوى تسويقي جذاب</p>
+    </section>
+
+    <section id="partners">
+      <h2>شركائنا</h2>
+      <div class="partners-grid">
+        <div class="partner-box">
+          <img src="ghadahub.png" alt="شريك غادة هب" />
+        </div>
+        <div class="partner-box">
+          <img src="trend.png" alt="شريك ترند" />
+        </div>
+        <!-- أضف المزيد حسب الحاجة -->
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="partners">
-    <h2 id="projects-title">شركائنا</h2>
-    <div class="grid grid-3">
-      <div class="card">
-        <img src="ghadahub.png" alt="ghadahub" style="width:100%; height:80px; object-fit:contain;" />
+    <section id="contact">
+      <h2>تواصل معنا</h2>
+      <div class="contact-info">
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f97316" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12 12.713l11.985-7.71A.75.75 0 0023.5 4h-23a.75.75 0 00-.485 1.003l11.985 7.71z"/><path d="M12 14.188L.015 6.476A.75.75 0 000 7.184v9.813a2 2 0 002 2h20a2 2 0 002-2V7.184a.75.75 0 00-.015-.708L12 14.188z"/></svg>
+          trendmediajor@gmail.com
+        </p>
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f97316" width="22" height="22" aria-hidden="true" focusable="false"><path d="M6.62 10.79a15.05 15.05 0 006.58 6.58l2.2-2.2a1 1 0 011.11-.21 11.52 11.52 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.52 11.52 0 00.57 3.6 1 1 0 01-.21 1.11l-2.24 2.08z"/></svg>
+          0791569362
+        </p>
+        <div class="social-icons" role="list">
+          <a href="https://www.instagram.com/trendmedia.jo" target="_blank" rel="noopener noreferrer" aria-label="Instagram" role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#E4405F" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false">
+              <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zM12 7a5 5 0 100 10 5 5 0 000-10zm5.5-1.5a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z"/>
+              <circle cx="12" cy="12" r="3" fill="#fff"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/USERNAME" target="_blank" rel="noopener noreferrer" aria-label="Facebook" role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#1877F2" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false">
+              <path d="M22 12a10 10 0 10-11.5 9.87v-6.98h-2.4v-2.9h2.4v-2.22c0-2.37 1.42-3.68 3.6-3.68 1.04 0 2.13.18 2.13.18v2.35h-1.2c-1.18 0-1.55.73-1.55 1.48v1.9h2.64l-.42 2.9h-2.22v6.98A10 10 0 0022 12z"/>
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com/@USERNAME" target="_blank" rel="noopener noreferrer" aria-label="TikTok" role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#000" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false">
+              <path d="M9.75 3v10.4a4.9 4.9 0 11-4.9-4.9v2.66A2.23 2.23 0 009.75 11V3h3v6a6 6 0 006 6h2a8 8 0 01-8-8V3z" fill="#000"/>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@USERNAME" target="_blank" rel="noopener noreferrer" aria-label="YouTube" role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#FF0000" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false">
+              <path d="M10 15l5.19-3L10 9v6zM21.8 7.12s-.21-1.5-.85-2.16c-.8-.85-1.7-.85-2.1-.9C15.44 4 12 4 12 4h0s-3.44 0-6.85.06c-.4 0-1.3.04-2.1.9-.64.66-.85 2.16-.85 2.16S2 9.07 2 10.92v2.16c0 1.86.2 3.8.2 3.8s.21 1.5.85 2.16c.8.85 1.85.82 2.32.91 1.68.13 7.1.05 7.1.05s3.44 0 6.85-.06c.4 0 1.5-.04 2.1-.9.64-.66.85-2.16.85-2.16s.2-1.95.2-3.8v-2.16c0-1.86-.2-3.8-.2-3.8z"/>
+            </svg>
+          </a>
+        </div>
       </div>
-      <div class="card">
-        <img src="trend.png" alt="trend" style="width:100%; height:80px; object-fit:contain;" />
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact" class="contact">
-    <h2 id="contact-title">تواصل معنا</h2>
-    <p><svg xmlns="http://www.w3.org/2000/svg" fill="#f97316" width="20" height="20" viewBox="0 0 24 24"><path d="M12 13L2 6.76V18a2 2 0 002 2h16a2 2 0 002-2V6.76L12 13z"/><path d="M22 6.5L12 12 2 6.5 12 1l10 5.5z"/></svg> trendmediajor@gmail.com</p>
-    <p><svg xmlns="http://www.w3.org/2000/svg" fill="#f97316" width="20" height="20" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.58 6.58l2.2-2.2a1 1 0 011.11-.21 11.52 11.52 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.52 11.52 0 00.57 3.6 1 1 0 01-.21 1.11l-2.24 2.08z"/></svg> 0791569362</p>
-    <div class="social-icons">
-      <a href="https://www.instagram.com/trendmedia.jo" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="#E4405F" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.013 4.85.07 1.206.057 2.006.25 2.48.42.52.18.89.4 1.28.79.39.39.61.76.79 1.28.17.47.362 1.27.42 2.48.057 1.266.07 1.65.07 4.85s-.013 3.584-.07 4.85c-.057 1.206-.25 2.006-.42 2.48-.18.52-.4.89-.79 1.28-.39.39-.76.61-1.28.79-.47.17-1.27.362-2.48.42-1.266.057-1.65.07-4.85.07s-3.584-.013-4.85-.07c-1.206-.057-2.006-.25-2.48-.42-.52-.18-.89-.4-1.28-.79-.39-.39-.61-.76-.79-1.28-.17-.47-.362-1.27-.42-2.48C2.213 15.584 2.2 15.2 2.2 12s.013-3.584.07-4.85c.057-1.206.25-2.006.42-2.48.18-.52.4-.89.79-1.28.39-.39.76-.61 1.28-.79.47-.17 1.27-.362 2.48-.42C8.416 2.213 8.8 2.2 12 2.2z"/></svg>
-      </a>
-      <a href="https://www.facebook.com/USERNAME" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="#1877F2" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.87v-6.98H7.9v-2.9h2.6V9.88c0-2.6 1.5-4 3.8-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6v1.9h2.9l-.5 2.9h-2.4v6.98A10 10 0 0022 12z"/></svg>
-      </a>
-    </div>
-  </section>
-
-  <footer>
-    <p id="footer-text">© 2024 Trend Media. جميع الحقوق محفوظة.</p>
-  </footer>
-
-  <script>
-    const langBtn = document.getElementById("lang-toggle");
-    const themeBtn = document.getElementById("theme-toggle");
-    let lang = "ar";
-    let theme = "dark";
-
-    const texts = {
-      ar: {
-        about: "من نحن",
-        services: "خدماتنا",
-        projects: "شركائنا",
-        contact: "تواصل معنا",
-        heroTitle: "نُطلق علامتك التجارية نحو <span class='orange'>الترند التالي</span>",
-        heroDesc: "شركة رقمية متخصصة في التسويق الإلكتروني وإدارة السوشيال ميديا بأحدث تقنيات الذكاء الاصطناعي",
-        rights: "© 2024 Trend Media. جميع الحقوق محفوظة."
-      },
-      en: {
-        about: "About Us",
-        services: "Services",
-        projects: "Our Partners",
-        contact: "Contact Us",
-        heroTitle: "We launch your brand into the <span class='orange'>Next Trend</span>",
-        heroDesc: "A digital agency specialized in online marketing and social media using AI tools.",
-        rights: "© 2024 Trend Media. All rights reserved."
-      }
-    };
-
-    langBtn.onclick = () => {
-      lang = lang === "ar" ? "en" : "ar";
-      document.documentElement.lang = lang;
-      document.body.dir = lang === "ar" ? "rtl" : "ltr";
-      langBtn.textContent = lang === "ar" ? "English" : "العربية";
-
-      const t = texts[lang];
-      document.getElementById("nav-about").textContent = t.about;
-      document.getElementById("nav-services").textContent = t.services;
-      document.getElementById("nav-projects").textContent = t.projects;
-      document.getElementById("nav-contact").textContent = t.contact;
-      document.getElementById("hero-title").innerHTML = t.heroTitle;
-      document.getElementById("hero-desc").textContent = t.heroDesc;
-      document.getElementById("about-title").textContent = t.about;
-      document.getElementById("about-desc").textContent = t.heroDesc;
-      document.getElementById("services-title").textContent = t.services;
-      document.getElementById("projects-title").textContent = t.projects;
-      document.getElementById("contact-title").textContent = t.contact;
-      document.getElementById("footer-text").textContent = t.rights;
-    };
-
-    themeBtn.onclick = () => {
-      document.body.classList.toggle("light-mode");
-      theme = theme === "dark" ? "light" : "dark";
-      themeBtn.textContent = theme === "dark" ? "🌙" : "☀️";
-    };
-  </script>
+    <footer>
+      <p>© 2024 Trend Media. جميع الحقوق محفوظة.</p>
+    </footer>
+  </main>
 </body>
 </html>
